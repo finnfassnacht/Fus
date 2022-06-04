@@ -1,9 +1,10 @@
 const express = require("express")
 const crypto = require("crypto")
+const router = express.Router();
 const app = express()
 app.use(express.json())
 var database = [] 
-app.post("/post", (req,res) => {
+router.post("/post", (req,res) => {
     var params_raw = (req.body)
     var hash = params_raw.hash;
     var name = params_raw.name;
@@ -35,9 +36,11 @@ app.post("/post", (req,res) => {
         }
     }
 })
-app.get("/entrys", (req,res) => {
+router.get("/entrys", (req,res) => {
     res.json(database)
 })
+
+app.use("/fus/", router);
 app.listen(8080, () => {
-    console.log("Server up")
+    console.log("server up!")
 })
