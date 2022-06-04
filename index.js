@@ -38,6 +38,6 @@ app.post("/post", (req,res) => {
 app.get("/entrys", (req,res) => {
     res.json(database)
 })
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log("Server up")
 })
